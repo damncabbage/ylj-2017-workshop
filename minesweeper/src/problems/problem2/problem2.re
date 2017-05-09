@@ -1,6 +1,8 @@
 let style =
   ReactDOMRe.Style.make
-    /* place the appropriate styles here */
+    width::"50px"
+    height::"50px"
+    backgroundColor::"grey"
     ();
 
 module Problem2 = {

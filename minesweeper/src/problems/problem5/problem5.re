@@ -3,9 +3,10 @@ module Problem5 = {
   type props = unit;
   let name = "Problem5";
   let render _ =>
-    <div
-      /* create the files problem5Square.re and problem5Square.rei and replace with div with <Problem5Square /> */
-    />;
+    <div>
+      <Problem5Square sideLength=(50) />
+      <Problem5Square sideLength=(25) />
+    </div>
 };
 
 include ReactRe.CreateComponent Problem5;

@@ -7,9 +7,24 @@ module Shape = {
   module type Shape = {let render: string => ReactRe.reactElement;};
   module Make (S: Shapeable) :Shape => {
     include S;
-    let render _ => <div style=S.style />;
+    let render x =>
+      <div>
+        <div style=S.style />
+        <span>(ReactRe.stringToElement x)</span>
+      </div>;
   };
 };
+
+
+module Square =
+  Shape.Make {
+    let style = ReactDOMRe.Style.make width::"30px" height::"30px" backgroundColor::"blue" ();
+  };
+
+module Circle =
+  Shape.Make {
+    let style = ReactDOMRe.Style.make borderRadius::"15px" width::"30px" height::"30px" backgroundColor::"red" ();
+  };
 
 /*
 use the Shape.Make functor to create two new modules:
@@ -37,8 +52,8 @@ module Problem7 = {
       </div>
       (
         switch state.shape {
-        | Circle => <div> (ReactRe.stringToElement "change me to a circle") </div>
-        | Square => <div> (ReactRe.stringToElement "change me to a square") </div>
+        | Circle => (Circle.render "circle")
+        | Square => (Square.render "square")
         }
       )
     </div>
